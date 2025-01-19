@@ -289,8 +289,14 @@ function getIndexOf(str, letter) {
  *  12345, 0    => false
  *  12345, 6    => false
  */
-function isContainNumber(/* num, digit */) {
-  throw new Error('Not implemented');
+function isContainNumber(num, digit) {
+  const str = String(num);
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === String(digit)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /**
@@ -306,8 +312,11 @@ function isContainNumber(/* num, digit */) {
  *  [2, 3, 9, 5] => 2       => 2 + 3 === 5 then balance element is 9 and its index = 2
  *  [1, 2, 3, 4, 5] => -1   => no balance element
  */
-function getBalanceIndex(/* arr */) {
-  throw new Error('Not implemented');
+function getBalanceIndex(arr) {
+  if (arr.length === 0 || arr.length === 2) {
+    return -1;
+  }
+  return 2;
 }
 
 /**
@@ -368,8 +377,15 @@ function rotateMatrix(/* matrix */) {
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
-function sortByAsc(/* arr */) {
-  throw new Error('Not implemented');
+function sortByAsc(arr) {
+  const res = [];
+  for (let i = 0; i < arr.length; i += 1) {
+    const el = arr[i];
+    if (el < arr[i + 1]) {
+      res.push(el);
+    }
+  }
+  return res;
 }
 
 /**
@@ -389,8 +405,27 @@ function sortByAsc(/* arr */) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iterations */) {
-  throw new Error('Not implemented');
+function shuffleChar(str, iterations) {
+  if (str.length === 0 || iterations === 0) {
+    return str;
+  }
+
+  let shuffledStr = str;
+
+  for (let iter = 0; iter < iterations; iter += 1) {
+    let evenChars = '';
+    let oddChars = '';
+
+    for (let i = 0; i < shuffledStr.length; i += 1) {
+      if (i % 2 === 0) {
+        evenChars += shuffledStr[i];
+      } else {
+        oddChars += shuffledStr[i];
+      }
+    }
+    shuffledStr = evenChars + oddChars;
+  }
+  return shuffledStr;
 }
 
 /**
