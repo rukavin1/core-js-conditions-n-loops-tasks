@@ -15,7 +15,6 @@ module.exports = {
     ecmaVersion: 2022,
   },
   rules: {
-    'no-param-reassign': ['warn', { props: false }],
     'prettier/prettier': [
       'error',
       {
