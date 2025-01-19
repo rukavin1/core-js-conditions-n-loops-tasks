@@ -290,9 +290,9 @@ function getIndexOf(str, letter) {
  *  12345, 6    => false
  */
 function isContainNumber(num, digit) {
-  const str = String(num);
-  for (let i = 0; i < str.length; i += 1) {
-    if (str[i] === String(digit)) {
+  const string = String(num);
+  for (let i = 0; i < string.length; i += 1) {
+    if (string[i] === String(digit)) {
       return true;
     }
   }
@@ -383,18 +383,13 @@ function rotateMatrix(matrix) {
   }
   const m = matrix[0].length;
   if (m === 0) return matrix;
-
+  let temp = 0;
   for (let i = 0; i < Math.floor(n / 2); i += 1) {
     for (let j = i; j < m - 1 - i; j += 1) {
-      const temp = matrix[i][j];
-      matrix[i][j] = matrix[m - 1 - j][i];
-      matrix[m - 1 - j][i] = matrix[n - 1 - i][m - 1 - j];
-      matrix[n - 1 - i][m - 1 - j] = matrix[j][m - 1 - i];
-      matrix[j][m - 1 - i] = temp;
+      temp = matrix[i][j];
     }
   }
-
-  return matrix;
+  return temp;
 }
 
 /**
