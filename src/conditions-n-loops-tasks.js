@@ -357,8 +357,8 @@ function getBalanceIndex(arr) {
  *          [10, 9,  8,  7]
  *        ]
  */
-function getSpiralMatrix(size) {
-  return size + 1;
+function getSpiralMatrix(/* size */) {
+  throw new Error('Not implemented');
 }
 
 /**
@@ -411,8 +411,8 @@ function rotateMatrix(matrix) {
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
-function sortByAsc(arr) {
-  return arr.length;
+function sortByAsc(/* arr */) {
+  throw new Error('Not implemented');
 }
 
 /**
@@ -432,27 +432,8 @@ function sortByAsc(arr) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(str, iterations) {
-  if (str.length === 0 || iterations === 0) {
-    return str;
-  }
-
-  let shuffledStr = str;
-
-  for (let iter = 0; iter < iterations; iter += 1) {
-    let evenChars = '';
-    let oddChars = '';
-
-    for (let i = 0; i < shuffledStr.length; i += 1) {
-      if (i % 2 === 0) {
-        evenChars += shuffledStr[i];
-      } else {
-        oddChars += shuffledStr[i];
-      }
-    }
-    shuffledStr = evenChars + oddChars;
-  }
-  return shuffledStr;
+function shuffleChar(/* str, iterations */) {
+  throw new Error('Not implemented');
 }
 
 /**
