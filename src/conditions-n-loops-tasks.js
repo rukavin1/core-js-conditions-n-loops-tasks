@@ -123,30 +123,35 @@ function isIsoscelesTriangle(a, b, c) {
  *  26  => XXVI
  */
 function convertToRomanNumerals(num) {
-  return num.toString();
-  // const ones = 'I';
-  // const five = 'V';
-  // const ten = 'X';
-  // if (num === 5) {
-  //   return five;
-  // } if
-  // (num === 10) {
-  //   return ten;
-  // } if
-  // (num >= 1 && num <= 3) {
-  //   return ones.repeat(num);
-  // } if
-  // (num === 4) {
-  //   return ones + five;
-  // } if
-  // (num > five && num <= 8) {
-  //   let number = num - 5;
-  //   return five + ones.repeat(number)
-  // } if
-  // (num === 9) {
-  //   return ones + ten
-  // }
-  // return false;
+  let romanNum = '';
+  let numRemains = num;
+
+  while (numRemains >= 10) {
+    romanNum += 'X';
+    numRemains -= 10;
+  }
+
+  while (numRemains >= 9) {
+    romanNum += 'IX';
+    numRemains -= 9;
+  }
+
+  while (numRemains >= 5) {
+    romanNum += 'V';
+    numRemains -= 5;
+  }
+
+  while (numRemains >= 4) {
+    romanNum += 'IV';
+    numRemains -= 4;
+  }
+
+  while (numRemains >= 1) {
+    romanNum += 'I';
+    numRemains -= 1;
+  }
+
+  return romanNum;
 }
 
 /**
@@ -165,7 +170,65 @@ function convertToRomanNumerals(num) {
  *  '1950.2'  => 'one nine five zero point two'
  */
 function convertNumberToString(numberStr) {
-  return numberStr.toString();
+  let result = '';
+  let startIndex = 0;
+
+  if (numberStr[0] === '-') {
+    result += 'minus ';
+    startIndex = 1;
+  }
+
+  for (let i = startIndex; i < numberStr.length; i += 1) {
+    const char = numberStr[i];
+
+    switch (char) {
+      case '0':
+        result += 'zero';
+        break;
+      case '1':
+        result += 'one';
+        break;
+      case '2':
+        result += 'two';
+        break;
+      case '3':
+        result += 'three';
+        break;
+      case '4':
+        result += 'four';
+        break;
+      case '5':
+        result += 'five';
+        break;
+      case '6':
+        result += 'six';
+        break;
+      case '7':
+        result += 'seven';
+        break;
+      case '8':
+        result += 'eight';
+        break;
+      case '9':
+        result += 'nine';
+        break;
+      case '.':
+      case ',':
+        result += 'point';
+        break;
+      default:
+        break;
+    }
+
+    if (
+      i < numberStr.length - 1 &&
+      ((char >= '0' && char <= '9') || char === '.' || char === ',')
+    ) {
+      result += ' ';
+    }
+  }
+
+  return result;
 }
 
 /**
@@ -181,10 +244,11 @@ function convertNumberToString(numberStr) {
  *  'qweqwe'    => false
  */
 function isPalindrome(str) {
-  if (str.split('').reverse().join('') === str) {
-    return true;
+  let resolto = '';
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    resolto += str[i];
   }
-  return false;
+  return resolto === str;
 }
 
 /**
@@ -202,7 +266,12 @@ function isPalindrome(str) {
  *  'qwerty', 'p'     => -1
  */
 function getIndexOf(str, letter) {
-  return str.indexOf(letter);
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === letter) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 /**
