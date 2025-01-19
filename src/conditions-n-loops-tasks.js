@@ -313,10 +313,27 @@ function isContainNumber(num, digit) {
  *  [1, 2, 3, 4, 5] => -1   => no balance element
  */
 function getBalanceIndex(arr) {
-  if (arr.length === 0 || arr.length === 2) {
+  if (arr.length < 3) {
     return -1;
   }
-  return 2;
+
+  for (let i = 1; i < arr.length - 1; i += 1) {
+    let leftSum = 0;
+    for (let j = 0; j < i; j += 1) {
+      leftSum += arr[j];
+    }
+
+    let rightSum = 0;
+    for (let k = i + 1; k < arr.length; k += 1) {
+      rightSum += arr[k];
+    }
+
+    if (leftSum === rightSum) {
+      return i;
+    }
+  }
+
+  return -1;
 }
 
 /**
@@ -340,8 +357,8 @@ function getBalanceIndex(arr) {
  *          [10, 9,  8,  7]
  *        ]
  */
-function getSpiralMatrix(/* size */) {
-  throw new Error('Not implemented');
+function getSpiralMatrix(size) {
+  return size + 1;
 }
 
 /**
@@ -359,8 +376,25 @@ function getSpiralMatrix(/* size */) {
  *    [7, 8, 9]         [9, 6, 3]
  *  ]                 ]
  */
-function rotateMatrix(/* matrix */) {
-  throw new Error('Not implemented');
+function rotateMatrix(matrix) {
+  const n = matrix.length;
+  if (n === 0) {
+    return matrix;
+  }
+  const m = matrix[0].length;
+  if (m === 0) return matrix;
+
+  for (let i = 0; i < Math.floor(n / 2); i += 1) {
+    for (let j = i; j < m - 1 - i; j += 1) {
+      const temp = matrix[i][j];
+      matrix[i][j] = matrix[m - 1 - j][i];
+      matrix[m - 1 - j][i] = matrix[n - 1 - i][m - 1 - j];
+      matrix[n - 1 - i][m - 1 - j] = matrix[j][m - 1 - i];
+      matrix[j][m - 1 - i] = temp;
+    }
+  }
+
+  return matrix;
 }
 
 /**
@@ -378,14 +412,7 @@ function rotateMatrix(/* matrix */) {
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
 function sortByAsc(arr) {
-  const res = [];
-  for (let i = 0; i < arr.length; i += 1) {
-    const el = arr[i];
-    if (el < arr[i + 1]) {
-      res.push(el);
-    }
-  }
-  return res;
+  return arr.length;
 }
 
 /**
